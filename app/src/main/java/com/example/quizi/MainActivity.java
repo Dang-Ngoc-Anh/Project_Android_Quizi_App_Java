@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.quizi.model.Question;
 import com.example.quizi.model.QuestionDataBase;
+import com.example.quizi.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,19 +28,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         hook();
 
-        btnDashboard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nextActivityDoashboard();
-            }
-        });
+//        User user = (User) getIntent().getExtras().get("objUser");
+//        tvUser.setText(user.getEmail().toString());
+        btnDashboard.setOnClickListener(v -> nextActivityDoashboard());
 
-        btnCreateExample.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nextActivityCreateExample();
-            }
-        });
+        btnCreateExample.setOnClickListener(v -> nextActivityCreateExample());
 
         tvLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,11 +42,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnTest.setOnClickListener(v -> {
 
-            }
         });
     }
 

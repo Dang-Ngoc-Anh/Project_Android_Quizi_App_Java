@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -88,6 +89,11 @@ public class UpdateQuestionActivity extends AppCompatActivity {
                     Toast.makeText(UpdateQuestionActivity.this, "Không để trống", Toast.LENGTH_SHORT).show();
                 }
             }
+        });
+
+        btnSuccess.setOnClickListener(v -> {
+            Intent intent = new Intent(UpdateQuestionActivity.this , TopicActivity .class);
+            startActivity(intent);
         });
     }
 

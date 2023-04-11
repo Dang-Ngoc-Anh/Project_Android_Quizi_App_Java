@@ -85,6 +85,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void nextActivityMain(){
             Intent intent = new Intent(LoginActivity.this , MainActivity.class);
+            User user = new User(etEmail.getText().toString() , etPassword.getText().toString());
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("objUser" , user);
+            intent.putExtras(bundle);
             startActivity(intent);
     }
 

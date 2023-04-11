@@ -45,68 +45,56 @@ public class DashboardActivity extends AppCompatActivity {
         btnNext.setClickable(false);
 
         resetDialog();
-        cardA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                disableButton();
-                btnNext.setClickable(true);
-                if(question.getOptionA().equals(question.getAnswer())){
-                    cardA.setBackgroundColor(getResources().getColor(R.color.green));
-                    if(index < modelList.size() - 1){
-                       correct(cardA);
-                    }else
-                        gameWon();
+        cardA.setOnClickListener(v -> {
+            disableButton();
+            btnNext.setClickable(true);
+            if(question.getOptionA().equals(question.getAnswer())){
+                cardA.setBackgroundColor(getResources().getColor(R.color.green));
+                if(index < modelList.size() - 1){
+                   correct(cardA);
                 }else
-                    wrong(cardA);
-            }
+                    gameWon();
+            }else
+                wrong(cardA);
         });
 
-        cardB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                disableButton();
-                btnNext.setClickable(true);
-                if(question.getOptionB().equals(question.getAnswer())){
-                    cardB.setBackgroundColor(getResources().getColor(R.color.green));
-                    if(index < modelList.size() - 1){
-                        correct(cardB);
-                    }else
-                        gameWon();
+        cardB.setOnClickListener(v -> {
+            disableButton();
+            btnNext.setClickable(true);
+            if(question.getOptionB().equals(question.getAnswer())){
+                cardB.setBackgroundColor(getResources().getColor(R.color.green));
+                if(index < modelList.size() - 1){
+                    correct(cardB);
                 }else
-                    wrong(cardB);
-            }
+                    gameWon();
+            }else
+                wrong(cardB);
         });
 
-        cardC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                disableButton();
-                btnNext.setClickable(true);
-                if(question.getOptionC().equals(question.getAnswer())){
-                    cardC.setBackgroundColor(getResources().getColor(R.color.green));
-                    if(index < modelList.size() - 1){
-                       correct(cardC);
-                    }else
-                        gameWon();
+        cardC.setOnClickListener(v -> {
+            disableButton();
+            btnNext.setClickable(true);
+            if(question.getOptionC().equals(question.getAnswer())){
+                cardC.setBackgroundColor(getResources().getColor(R.color.green));
+                if(index < modelList.size() - 1){
+                   correct(cardC);
                 }else
-                    wrong(cardC);
-            }
+                    gameWon();
+            }else
+                wrong(cardC);
         });
 
-        cardD.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                disableButton();
-                btnNext.setClickable(true);
-                if(question.getOptionD().equals(question.getAnswer())){
-                    cardD.setBackgroundColor(getResources().getColor(R.color.green));
-                    if(index < modelList.size() - 1){
-                        correct(cardD);
-                    }else
-                        gameWon();
+        cardD.setOnClickListener(v -> {
+            disableButton();
+            btnNext.setClickable(true);
+            if(question.getOptionD().equals(question.getAnswer())){
+                cardD.setBackgroundColor(getResources().getColor(R.color.green));
+                if(index < modelList.size() - 1){
+                    correct(cardD);
                 }else
-                    wrong(cardD);
-            }
+                    gameWon();
+            }else
+                wrong(cardD);
         });
     }
 

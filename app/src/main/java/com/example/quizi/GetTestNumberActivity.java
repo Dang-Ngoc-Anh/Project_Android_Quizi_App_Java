@@ -26,9 +26,9 @@ public class GetTestNumberActivity extends AppCompatActivity {
     ListView lvQuestion;
     AdapterQuestion adapterQuestion;
     static List<Question> list;
-    long topicNumbers ;
-    int index;
-    long number;
+    static long topicNumbers ;
+    static int index;
+    static long number;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

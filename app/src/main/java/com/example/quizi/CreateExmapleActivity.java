@@ -87,7 +87,15 @@ public class CreateExmapleActivity extends AppCompatActivity {
                             strAnswer = tvAnswer.getText().toString().trim();
                             number += 1;
                             list = QuestionDataBase.getInstance(CreateExmapleActivity.this).questionDAO().getItemByTopic(topicNumbers);
-                            if(list.size() < maxQuestion){
+                            if(list.size() == 0){
+                                Question question = new Question(
+                                        topicNumbers ,
+                                        0,
+                                        questions, questionA, questionB, questionC, questionD, strAnswer
+                                );
+                                addOneData(question);
+                            }
+                            else if(list.size() < maxQuestion){
                                 Question question = new Question(
                                         topicNumbers ,
                                         list.get(list.size() - 1).getNumbers() + 1,
