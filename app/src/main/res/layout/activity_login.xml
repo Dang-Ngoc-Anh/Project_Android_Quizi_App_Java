@@ -30,7 +30,7 @@
         app:layout_constraintVertical_bias="0.317" />
 
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/etPasswordNew"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/shap"
@@ -71,7 +71,7 @@
         android:text="@string/prompt_password"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/etPassword"
+        app:layout_constraintBottom_toTopOf="@+id/etPasswordNew"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent" />
@@ -94,7 +94,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etPasswordNew" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -130,7 +130,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etPasswordNew" />
 
     <TextView
         android:id="@+id/createAccount"
@@ -143,7 +143,7 @@
         android:textColorHighlight="#F2F0F0"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etPasswordNew" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

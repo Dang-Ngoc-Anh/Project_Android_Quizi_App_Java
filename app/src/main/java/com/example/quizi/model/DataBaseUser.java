@@ -23,7 +23,7 @@ public class DataBaseUser extends SQLiteOpenHelper {
     public static final String COLUMN_CONFIRM_PASSWORD = "COLUMN_CONFIRM_PASSWORD";
     public static final String DB_USERS = "DB_USER.db";
 
-    public DataBaseUser(@Nullable Context context) {
+    public  DataBaseUser(@Nullable Context context) {
         super(context, DB_USERS, null, 1);
     }
 
@@ -78,5 +78,21 @@ public class DataBaseUser extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return userList;
+    }
+
+    public void updatePassword(String email , String newPass){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        // on below line we are passing all values
+        // along with its key and value pair.
+        values.put(COLUMN_EMAIL, email);
+        values.put(COLUMN_PASSWORD, newPass);
+        values.put(COLUMN_CONFIRM_PASSWORD, newPass);
+
+        // on below line we are calling a update method to update our database and passing our values.
+        // and we are comparing it with name of our course which is stored in original name variable.
+        db.update(TABLE_USER, values, "COLUMN_EMAIL=?", new String[]{email});
+        db.close();
     }
 }

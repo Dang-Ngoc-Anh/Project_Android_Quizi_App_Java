@@ -23,7 +23,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText etPassword;
     Button btnlogin;
     TextView forgetPassword , createAccount;
-
+    public static String email;
+    public static String password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,45 +32,47 @@ public class LoginActivity extends AppCompatActivity {
 //        init view
         getView();
 
-        createAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nextActivitySignUp();
-            }
+        createAccount.setOnClickListener(v -> nextActivitySignUp());
+        forgetPassword.setOnClickListener(v -> {
+            nextActivityForgetPassword();
         });
 
+        btnlogin.setOnClickListener(v -> {
+            email = etEmail.getText().toString().trim();
+            password = etPassword.getText().toString().trim();
 
-        btnlogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = etEmail.getText().toString().trim();
-                String password = etPassword.getText().toString().trim();
-                DataBaseUser dataBaseUser = new DataBaseUser(LoginActivity.this);
-                List<User> list = new ArrayList<>();
-                list = dataBaseUser.getAllUser();
-                if(email.equals("Admin@gmail.com") && password.equals("admin")){
-                    nextActivityMain();
-                    return;
-                }
-                boolean hasUser = true;
-                if(checkEmpty() == true && isValidEmail(email) == true){
+//            get list data user
+            DataBaseUser dataBaseUser = new DataBaseUser(LoginActivity.this);
+            List<User> list = new ArrayList<>();
+            list = dataBaseUser.getAllUser();
+
+//          check account
+            if(email.equals("Admin@gmail.com") && password.equals("admin")){
+                email = "Admin";
+                nextActivityMain();
+                return;
+            }
+            boolean hasUser = true;
+            if(checkEmpty() == true ){
+                if(isValidEmail(email)){
                     if(list.size() == 0){
                         Toast.makeText(LoginActivity.this, "Bạn chưa có account", Toast.LENGTH_SHORT).show();
                     }else
                         for(User item : list){
-                        if(item.getEmail().equals(email)  && item.getPassword().equals(password)){
-                            nextActivityUserMain();
-                            hasUser = true;
-                            Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                            break;
-                        } else
-                            hasUser = false;
-                    }
+                            if(item.getEmail().equals(email)  && item.getPassword().equals(password)){
+                                nextActivityUserMain();
+                                hasUser = true;
+                                Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                                break;
+                            } else
+                                hasUser = false;
+                        }
                 }else
-                    Toast.makeText(LoginActivity.this, "Không để trống or email chưa fomat", Toast.LENGTH_SHORT).show();
-                if(hasUser == false)
-                    Toast.makeText(LoginActivity.this, "Bạn chưa có account", Toast.LENGTH_SHORT).show();
-            }
+                    Toast.makeText(LoginActivity.this, "Email chưa fomat", Toast.LENGTH_SHORT).show();
+            }else
+                Toast.makeText(LoginActivity.this, "Không để trống", Toast.LENGTH_SHORT).show();
+            if(hasUser == false)
+                Toast.makeText(LoginActivity.this, "Bạn chưa có account", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -85,10 +88,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void nextActivityMain(){
             Intent intent = new Intent(LoginActivity.this , MainActivity.class);
-            User user = new User(etEmail.getText().toString() , etPassword.getText().toString());
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("objUser" , user);
-            intent.putExtras(bundle);
+            Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
             startActivity(intent);
     }
 
@@ -107,9 +107,14 @@ public class LoginActivity extends AppCompatActivity {
         return false;
     }
 
+    public void nextActivityForgetPassword(){
+        Intent intent = new Intent(LoginActivity.this , ForgetPasswordActivity.class);
+        startActivity(intent);
+
+    }
     public void getView(){
         etEmail = findViewById(R.id.etEmail);
-        etPassword = findViewById(R.id.etPassword);
+        etPassword = findViewById(R.id.etPasswordNew);
         btnlogin = findViewById(R.id.btnLogin);
         forgetPassword = findViewById(R.id.forgetPassword);
         createAccount = findViewById(R.id.createAccount);

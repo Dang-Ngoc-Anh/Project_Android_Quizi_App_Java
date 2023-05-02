@@ -7,10 +7,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.quizi.model.DataBaseUser;
@@ -104,9 +102,9 @@ public class SignUpActivity extends AppCompatActivity {
     }
     public void getView(){
         etEmail = findViewById(R.id.etEmail);
-        etPassword = findViewById(R.id.etPassword);
-        etConfirmPassword = findViewById(R.id.etConfirmPassword);
-        btnSignUp = findViewById(R.id.btnSignUp);
+        etPassword = findViewById(R.id.etPasswordNew);
+        etConfirmPassword = findViewById(R.id.etConfirmPasswordNew);
+        btnSignUp = findViewById(R.id.btnSuccess);
     }
 
 //    public void showAdapter(){

@@ -17,6 +17,7 @@ public class WonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_won);
         hooks();
+        tvUser.setText(LoginActivity.email);
         int countCorrect = (int) getIntent().getExtras().get("countCorrect");
         int countWrong = (int) getIntent().getExtras().get("countWrong");
 
@@ -36,7 +37,7 @@ public class WonActivity extends AppCompatActivity {
     }
 
     public void hooks(){
-//        tvUser = findViewById(R.id.tvUser);
+        tvUser = findViewById(R.id.tvUser);
         tvResult = findViewById(R.id.tvResult);
         btnSaveResult = findViewById(R.id.btnSaveResult);
     }

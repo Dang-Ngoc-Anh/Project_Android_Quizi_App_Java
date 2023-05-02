@@ -95,7 +95,7 @@
                     android:layout_column="0"
                     />
                 <Button
-                    android:id="@+id/btnHistoryMark"
+                    android:id="@+id/btnMark"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_margin="10dp"
@@ -107,18 +107,18 @@
                     android:layout_row="0"
                     android:layout_column="1"
                     />
-<!--                <Button-->
-<!--                    android:id="@+id/btnCreateExample"-->
-<!--                    android:layout_width="100dp"-->
-<!--                    android:layout_height="100dp"-->
-<!--                    android:layout_margin="10dp"-->
-<!--                    android:background="@drawable/shap_button_main"-->
-<!--                    android:text="Tạo đề thi"-->
-<!--                    android:textAllCaps="false"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:textSize="22sp"-->
-<!--                    android:layout_row="0"-->
-<!--                    android:layout_column="2"/>-->
+                <Button
+                    android:id="@+id/btnCreateExample"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/shap_button_main"
+                    android:text="Tạo đề thi"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:layout_row="0"
+                    android:layout_column="2"/>
                 <Button
                     android:id="@+id/btnLienHe"
                     android:layout_width="100dp"
@@ -131,18 +131,18 @@
                     android:textSize="22sp"
                     android:layout_row="0"
                     android:layout_column="2"/>
-                <Button
-                    android:id="@+id/btnDanhGia"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shap_button_main"
-                    android:text="Đánh giá"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="22sp"
-                    android:layout_row="1"
-                    android:layout_column="0"/>
+<!--                <Button-->
+<!--                    android:id="@+id/btnDanhGia"-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:background="@drawable/shap_button_main"-->
+<!--                    android:text="Đánh giá"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="22sp"-->
+<!--                    android:layout_row="1"-->
+<!--                    android:layout_column="0"/>-->
             </GridLayout>
 
         </GridLayout>

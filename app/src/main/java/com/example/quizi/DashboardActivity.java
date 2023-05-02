@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -27,10 +28,11 @@ public class DashboardActivity extends AppCompatActivity {
     TextView cardQuestion ,cardOptionA , cardOptionB ,cardOptionC,cardOptionD;
     CardView cardA , cardB , cardC , cardD;
     Button btnNext;
+    ImageView imgBack;
     int timeValue = 15;
     int index = 0;
-    int countCorrect = 0;
-    int countWrong = 0;
+    static int countCorrect = 0;
+    static int countWrong = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +42,10 @@ public class DashboardActivity extends AppCompatActivity {
         modelList = new ArrayList<>();
         modelList = QuestionDataBase.getInstance(getApplicationContext()).questionDAO().getItems();
 //        Collections.shuffle(modelList);
+//        get ra câu hỏi ở vị trí nào
         question = modelList.get(index);
         setAllData();
-        btnNext.setClickable(false);
+        btnNext.setClickable(true);
 
         resetDialog();
         cardA.setOnClickListener(v -> {
@@ -59,7 +62,7 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
         cardB.setOnClickListener(v -> {
-            disableButton();
+//            disableButton();
             btnNext.setClickable(true);
             if(question.getOptionB().equals(question.getAnswer())){
                 cardB.setBackgroundColor(getResources().getColor(R.color.green));
@@ -96,6 +99,11 @@ public class DashboardActivity extends AppCompatActivity {
             }else
                 wrong(cardD);
         });
+
+        imgBack.setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this , MainActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void setAllData() {
@@ -126,6 +134,8 @@ public class DashboardActivity extends AppCompatActivity {
 
 //        next question
         btnNext = findViewById(R.id.btnNext);
+
+        imgBack = findViewById(R.id.imgBack);
     }
 
 
@@ -153,7 +163,6 @@ public class DashboardActivity extends AppCompatActivity {
         }.start();
     }
     public void correct(CardView card){
-        card.setBackgroundColor(getResources().getColor(R.color.green));
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
