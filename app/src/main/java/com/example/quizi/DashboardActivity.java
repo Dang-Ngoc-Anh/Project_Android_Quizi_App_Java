@@ -11,9 +11,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.quizi.model.Question;
 import com.example.quizi.model.QuestionDataBase;
+import com.example.quizi.model.Topic;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,16 +33,17 @@ public class DashboardActivity extends AppCompatActivity {
     ImageView imgBack;
     int timeValue = 15;
     int index = 0;
-    static int countCorrect = 0;
-    static int countWrong = 0;
+     int countCorrect = 0;
+     int countWrong = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         hooks();
 
+        Topic topic = (Topic) getIntent().getExtras().get("objTopic");
         modelList = new ArrayList<>();
-        modelList = QuestionDataBase.getInstance(getApplicationContext()).questionDAO().getItems();
+        modelList = QuestionDataBase.getInstance(getApplicationContext()).questionDAO().getItemByTopic(topic.getTopic());
 //        Collections.shuffle(modelList);
 //        get ra câu hỏi ở vị trí nào
         question = modelList.get(index);
@@ -62,7 +65,7 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
         cardB.setOnClickListener(v -> {
-//            disableButton();
+            disableButton();
             btnNext.setClickable(true);
             if(question.getOptionB().equals(question.getAnswer())){
                 cardB.setBackgroundColor(getResources().getColor(R.color.green));
@@ -166,15 +169,19 @@ public class DashboardActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
                 countDownTimer.cancel();
                 timeValue = 15;
                 resetDialog();
-                countCorrect++;
-                index++;
-                question = modelList.get(index);
-                resetColor();
-                setAllData();
-                enableButton();
+                    ++countCorrect;
+                    index++;
+                    question = modelList.get(index);
+                    resetColor();
+                    setAllData();
+                    enableButton();
+                }catch (Exception e){
+                    Toast.makeText(DashboardActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -187,7 +194,7 @@ public class DashboardActivity extends AppCompatActivity {
                 countDownTimer.cancel();
                 timeValue = 15;
                 resetDialog();
-                countWrong++;
+                ++countWrong;
                 if(index < modelList.size() - 1){
                     index++;
                     question = modelList.get(index);
@@ -228,6 +235,7 @@ public class DashboardActivity extends AppCompatActivity {
         cardC.setBackgroundColor(getResources().getColor(R.color.white));
         cardD.setBackgroundColor(getResources().getColor(R.color.white));
     }
+
 
 
 }

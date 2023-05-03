@@ -32,9 +32,10 @@ public class MainActivity extends AppCompatActivity {
         hook();
         User user = new User(LoginActivity.email , LoginActivity.password);
         tvUser.setText(user.getEmail().toString());
-
+//        tvUser.setVisibility(View.VISIBLE);
+//        tvUser.setTextColor(getResources().getColor(R.color.green));
 //        button vào thi
-        btnDashboard.setOnClickListener(v -> nextActivityDoashboard());
+        btnDashboard.setOnClickListener(v -> nextActivityGetTopic());
 
 //        button tạo đề thi
         btnCreateExample.setOnClickListener(v -> nextActivityCreateExample());
@@ -47,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
 //        button xem kết quả vừa thi
         btnMark.setOnClickListener(v -> {
          Intent intent = new Intent(MainActivity.this, WonActivity.class);
-            intent.putExtra("countCorrect" , DashboardActivity.countCorrect);
-            intent.putExtra("countWrong" , DashboardActivity.countWrong);
+            intent.putExtra("countCorrect" , WonActivity.countCorrect);
+            intent.putExtra("countWrong" , WonActivity.countWrong);
             startActivity(intent);
         });
 
@@ -60,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void nextActivityGetTopic() {
+        Intent intent = new Intent(MainActivity.this , GetTopicActivity.class);
+        startActivity(intent);
     }
 
     private void nextActivityCreateExample() {
@@ -81,5 +87,8 @@ public class MainActivity extends AppCompatActivity {
         btnContact = findViewById(R.id.btnLienHe);
     }
 
+    public void restText(){
+
+    }
 
 }

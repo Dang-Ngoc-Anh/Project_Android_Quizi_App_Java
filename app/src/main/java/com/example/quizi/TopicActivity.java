@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.quizi.adapter.AdapterTopic;
 import com.example.quizi.model.Question;
@@ -75,6 +76,7 @@ public class TopicActivity extends AppCompatActivity {
                     topicNumbers = Long.parseLong(arrTopicNumbers[which].toString());
                 });
 
+//                activity Get test question get all question my topic
                 builder.setPositiveButton("Đồng ý ", (dialog, which) -> {
                     nextActivityGetQuestion(topicNumbers);
                 });
@@ -90,6 +92,8 @@ public class TopicActivity extends AppCompatActivity {
             public void onClick(View v) {
                 loadData();
                 list = TopicDataBase.getInstance(TopicActivity.this).topicDAO().getAllTopic();
+
+//                Create dialog , với lựa chọn là text các câu hỏi
                 AlertDialog.Builder builder = new AlertDialog.Builder(TopicActivity.this);
                 builder.setTitle("Lựa chọn đề : ");
 
@@ -105,7 +109,7 @@ public class TopicActivity extends AppCompatActivity {
 
                 builder.setPositiveButton("Đồng ý ", (dialog, which) -> {
                     TopicDataBase.getInstance(TopicActivity.this).topicDAO().deleteTopicByName(topicNumbers);
-                    QuestionDataBase.getInstance(TopicActivity.this).questionDAO().deleteQuestionByTopic(topicNumbers);
+                    QuestionDataBase.getInstance(TopicActivity.this).questionDAO(). deleteQuestionByTopic(topicNumbers);
                     loadData();
                 });
 

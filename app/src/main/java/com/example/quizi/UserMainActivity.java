@@ -37,8 +37,8 @@ public class UserMainActivity extends AppCompatActivity {
 
         btnMark.setOnClickListener(v -> {
             Intent intent = new Intent(UserMainActivity.this, WonActivity.class);
-            intent.putExtra("countCorrect" , DashboardActivity.countCorrect);
-            intent.putExtra("countWrong" , DashboardActivity.countWrong);
+            intent.putExtra("countCorrect" , WonActivity.countCorrect);
+            intent.putExtra("countWrong" , WonActivity.countWrong);
             startActivity(intent);
         });
 

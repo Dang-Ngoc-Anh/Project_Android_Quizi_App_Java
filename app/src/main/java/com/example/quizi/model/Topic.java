@@ -3,8 +3,10 @@ package com.example.quizi.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "TABLE_TOPIC")
-public class Topic {
+public class Topic implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private long id;
     private long topic;

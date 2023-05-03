@@ -12,14 +12,16 @@ public class WonActivity extends AppCompatActivity {
 
     TextView tvResult , tvUser;
     Button btnSaveResult;
+    static int countCorrect;
+    static  int  countWrong;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_won);
         hooks();
         tvUser.setText(LoginActivity.email);
-        int countCorrect = (int) getIntent().getExtras().get("countCorrect");
-        int countWrong = (int) getIntent().getExtras().get("countWrong");
+         countCorrect = (int) getIntent().getExtras().get("countCorrect");
+         countWrong = (int) getIntent().getExtras().get("countWrong");
 
         tvResult.setText("Đúng : " + countCorrect + "\nSai : " + countWrong);
 

@@ -31,7 +31,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 //        init view
         getView();
-
+        etEmail.setText("Admin@gmail.com");
+        etPassword.setText("admin");
         createAccount.setOnClickListener(v -> nextActivitySignUp());
         forgetPassword.setOnClickListener(v -> {
             nextActivityForgetPassword();
