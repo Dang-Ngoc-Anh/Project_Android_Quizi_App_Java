@@ -31,6 +31,7 @@ public class DashboardActivity extends AppCompatActivity {
     CardView cardA , cardB , cardC , cardD;
     Button btnNext;
     ImageView imgBack;
+    Topic topic;
     int timeValue = 15;
     int index = 0;
      int countCorrect = 0;
@@ -41,7 +42,7 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         hooks();
 
-        Topic topic = (Topic) getIntent().getExtras().get("objTopic");
+        topic = (Topic) getIntent().getExtras().get("objTopic");
         modelList = new ArrayList<>();
         modelList = QuestionDataBase.getInstance(getApplicationContext()).questionDAO().getItemByTopic(topic.getTopic());
 //        Collections.shuffle(modelList);
@@ -187,7 +188,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     public void wrong(CardView card){
-        card.setBackgroundColor(getResources().getColor(R.color.red));
+        card.setBackgroundColor(getResources().getColor(R.color.green));
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -213,6 +214,7 @@ public class DashboardActivity extends AppCompatActivity {
         Intent intent = new Intent(DashboardActivity.this , WonActivity.class);
         intent.putExtra("countCorrect" , countCorrect);
         intent.putExtra("countWrong" , countWrong);
+        intent.putExtra("topicNumber" , topic.getTopic());
         startActivity(intent);
     }
 

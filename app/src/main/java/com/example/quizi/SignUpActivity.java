@@ -53,7 +53,7 @@ public class SignUpActivity extends AppCompatActivity {
             String password = etPassword.getText().toString().trim();
             String confirmPassword =  etConfirmPassword.getText().toString().trim();
 
-            if(password.equals(confirmPassword) && checkEmpty() == true && isValidEmail(email) == true){
+            if(password.equals(confirmPassword) /*&& checkEmpty() == true && isValidEmail(email) == true*/){
                 DataBaseUser dataBaseUser = new DataBaseUser(SignUpActivity.this);
                 List<User> list = new ArrayList<>();
                 list = dataBaseUser.getAllUser();

@@ -19,5 +19,6 @@ public abstract class QuestionDataBase extends RoomDatabase {
         return instance;
     }
 
+
     public abstract QuestionDAO questionDAO();
 }

@@ -36,7 +36,7 @@ public class UserMainActivity extends AppCompatActivity {
         });
 
         btnMark.setOnClickListener(v -> {
-            Intent intent = new Intent(UserMainActivity.this, WonActivity.class);
+            Intent intent = new Intent(UserMainActivity.this, HistoryActivity.class);
             intent.putExtra("countCorrect" , WonActivity.countCorrect);
             intent.putExtra("countWrong" , WonActivity.countWrong);
             startActivity(intent);
@@ -53,7 +53,7 @@ public class UserMainActivity extends AppCompatActivity {
     }
 
     private void nextActivityDoashboard() {
-        Intent intent = new Intent(UserMainActivity.this , DashboardActivity.class);
+        Intent intent = new Intent(UserMainActivity.this , GetTopicActivity.class);
         startActivity(intent);
     }
 

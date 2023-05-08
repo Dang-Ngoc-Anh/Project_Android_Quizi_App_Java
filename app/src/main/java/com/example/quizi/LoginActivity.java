@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 //        init view
         getView();
-        etEmail.setText("Admin@gmail.com");
+        etEmail.setText("Admin");
         etPassword.setText("admin");
         createAccount.setOnClickListener(v -> nextActivitySignUp());
         forgetPassword.setOnClickListener(v -> {
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
             list = dataBaseUser.getAllUser();
 
 //          check account
-            if(email.equals("Admin@gmail.com") && password.equals("admin")){
+            if(email.equals("Admin") && password.equals("admin")){
                 email = "Admin";
                 nextActivityMain();
                 return;

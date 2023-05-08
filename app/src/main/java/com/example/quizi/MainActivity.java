@@ -25,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        remove tile , full screen
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        /*requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);*/
         setContentView(R.layout.activity_main);
         hook();
         User user = new User(LoginActivity.email , LoginActivity.password);
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        button xem kết quả vừa thi
         btnMark.setOnClickListener(v -> {
-         Intent intent = new Intent(MainActivity.this, WonActivity.class);
+         Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
             intent.putExtra("countCorrect" , WonActivity.countCorrect);
             intent.putExtra("countWrong" , WonActivity.countWrong);
             startActivity(intent);
